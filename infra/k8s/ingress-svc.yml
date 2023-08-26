@@ -1,0 +1,29 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-svc
+  namespace: carsties  
+  labels:
+    name: ingress-svc
+spec:
+  defaultBackend:
+    service:
+      name: gateway-clusterip
+      port:
+        number: 80
+  ingressClassName: nginx
+  tls:
+    - hosts:
+      - api.carsties.com
+      secretName: carsties-app-tls
+  rules:
+  - host: api.carsties.com
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: gateway-clusterip
+            port: 
+              number: 80

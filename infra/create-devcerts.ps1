@@ -1,0 +1,1 @@
+mkcert -key-file devcerts\server.key -cert-file devcerts\server.crt app.carsties.com api.carsties.com
