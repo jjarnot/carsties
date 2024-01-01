@@ -68,3 +68,6 @@ var retryPolicy = Policy.Handle<NpgsqlException>().WaitAndRetry(5, retryAttempt 
 retryPolicy.ExecuteAndCapture(() => DbInitializer.InitDb(app));
 
 app.Run();
+
+
+public partial class Program{}
